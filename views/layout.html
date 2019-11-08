@@ -1,0 +1,20 @@
+<html lang="zh">
+<head>
+	<title>{{title}}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% block head %}
+	{% endblock %}
+</head>
+<body>
+	{% include "common/header.html" %}
+
+	{% block body %}
+	<h1>This is body</h1>
+	{% endblock %}
+
+	{% include "common/footer.html" %}
+
+	{% block content %}
+	{% endblock %}
+</body>
+</html>
