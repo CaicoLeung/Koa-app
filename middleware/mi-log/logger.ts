@@ -1,4 +1,5 @@
 import * as log4js from 'log4js'
+import access from "./access"
 
 type envTpye = typeof envTypes[number]
 type methodsType = 'trace' | 'debug' | 'info' | 'warn' | 'error' | 'fatal' | 'mark'
@@ -20,7 +21,8 @@ const baseInfo: IBaseIngoInterface = {
     projectName: 'koa2-tutorial',
     serverIp: '0.0.0.0'
 }
-const { env, appLogLevel, dir } = baseInfo
+const { env, appLogLevel, dir, serverIp, projectName } = baseInfo
+const commonInfo = { serverIp, projectName }
 
 export default (options?) => {
     const contextLogger = {}
@@ -54,12 +56,13 @@ export default (options?) => {
         const start = Date.now()
         methods.forEach((method, index) => {
             contextLogger[method] = (message) => {
-                logger[method](message)
+                logger[method](access(ctx, message, commonInfo))
             }
         })
         ctx.log= contextLogger
         await next()
         const end = Date.now()
-        logger.info(`path: ${ctx.request.path}, method: ${ctx.request.method}, 响应时间: ${end - start}ms`)
+        const message = `path: ${ctx.request.path}, method: ${ctx.request.method}, 响应时间: ${end - start}ms`
+        logger.info(access(ctx, message, commonInfo))
     }
 }
