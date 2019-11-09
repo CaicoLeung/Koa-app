@@ -21,19 +21,20 @@ const baseInfo: IBaseIngoInterface = {
     projectName: 'koa2-tutorial',
     serverIp: '0.0.0.0'
 }
-const { env, appLogLevel, dir, serverIp, projectName } = baseInfo
-const commonInfo = { serverIp, projectName }
 
-export default (options?) => {
+export default (options:IBaseIngoInterface) => {
     const contextLogger = {}
     const appenders = {
         cheese: undefined,
         out: undefined
     }
+    const opts= Object.assign({}, baseInfo, options)
+    const { env, appLogLevel, dir, serverIp, projectName } = opts
+    const commonInfo = { serverIp, projectName }
     appenders.cheese = {
         type: 'dateFile',
         filename: `${dir}/task`,
-        pattern: '-yyy-MM-dd.log',
+        pattern: 'yyy-MM-dd.log',
         alwaysIncludePattern: true
     }
     if (envTypes.includes(env)) {
@@ -50,11 +51,11 @@ export default (options?) => {
             }
         }
     }
-    log4js.configure(config)
     const logger = log4js.getLogger('cheese')
     return async (ctx, next) => {
         const start = Date.now()
-        methods.forEach((method, index) => {
+        log4js.configure(config)
+        methods.forEach((method: methodsType) => {
             contextLogger[method] = (message) => {
                 logger[method](access(ctx, message, commonInfo))
             }

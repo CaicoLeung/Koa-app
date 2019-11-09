@@ -1,0 +1,40 @@
+[2019-11-09T10:07:36.598] [ERROR] cheese - caico
+[2019-11-09T10:07:36.613] [INFO] cheese - path: /user/register, method: POST, 响应时间: 25ms
+[2019-11-09T10:07:36.639] [INFO] cheese - path: /home/main.css, method: GET, 响应时间: 4ms
+[2019-11-09T10:07:40.293] [ERROR] cheese - caico
+[2019-11-09T10:07:40.294] [INFO] cheese - path: /404, method: GET, 响应时间: 2ms
+[2019-11-09T10:07:49.762] [ERROR] cheese - caico
+[2019-11-09T10:07:49.762] [INFO] cheese - path: /111, method: GET, 响应时间: 1ms
+[2019-11-09T10:07:52.468] [ERROR] cheese - caico
+[2019-11-09T10:07:52.470] [INFO] cheese - path: /, method: GET, 响应时间: 2ms
+[2019-11-09T10:07:52.499] [INFO] cheese - path: /home/main.css, method: GET, 响应时间: 0ms
+[2019-11-09T10:08:22.883] [ERROR] cheese - caico
+[2019-11-09T10:08:22.884] [INFO] cheese - path: /user/register2, method: POST, 响应时间: 1ms
+[2019-11-09T10:08:47.373] [ERROR] cheese - caico
+[2019-11-09T10:08:47.373] [INFO] cheese - path: /user/register2, method: POST, 响应时间: 0ms
+[2019-11-09T10:10:01.528] [ERROR] cheese - caico
+[2019-11-09T10:10:01.542] [INFO] cheese - path: /, method: GET, 响应时间: 20ms
+[2019-11-09T10:10:01.565] [INFO] cheese - path: /home/main.css, method: GET, 响应时间: 2ms
+[2019-11-09T10:10:04.420] [ERROR] cheese - caico
+[2019-11-09T10:10:04.422] [INFO] cheese - path: /sss, method: GET, 响应时间: 2ms
+[2019-11-09T10:10:13.773] [ERROR] cheese - caico
+[2019-11-09T10:10:13.773] [INFO] cheese - path: /user/register2, method: POST, 响应时间: 6ms
+[2019-11-09T10:29:30.765] [ERROR] cheese - caico
+[2019-11-09T10:29:30.768] [INFO] cheese - path: /caico, method: GET, 响应时间: 9ms
+[2019-11-09T10:29:43.326] [ERROR] cheese - caico
+[2019-11-09T10:29:43.337] [INFO] cheese - path: /user, method: GET, 响应时间: 11ms
+[2019-11-09T10:29:43.362] [INFO] cheese - path: /home/main.css, method: GET, 响应时间: 2ms
+[2019-11-09T10:29:45.592] [ERROR] cheese - caico
+[2019-11-09T10:29:45.593] [INFO] cheese - path: /user/register, method: POST, 响应时间: 9ms
+[2019-11-09T10:29:45.614] [INFO] cheese - path: /home/main.css, method: GET, 响应时间: 1ms
+[2019-11-09T10:29:55.061] [ERROR] cheese - caico
+[2019-11-09T10:29:55.062] [INFO] cheese - path: /user/register2, method: POST, 响应时间: 1ms
+[2019-11-09T10:35:20.541] [ERROR] cheese - caico
+[2019-11-09T10:35:20.541] [INFO] cheese - path: /user/register, method: POST, 响应时间: 1ms
+[2019-11-09T10:35:20.587] [INFO] cheese - path: /home/main.css, method: GET, 响应时间: 2ms
+[2019-11-09T10:35:31.263] [ERROR] cheese - caico
+[2019-11-09T10:35:31.266] [INFO] cheese - path: /user/register/11, method: GET, 响应时间: 9ms
+[2019-11-09T10:35:38.107] [ERROR] cheese - caico
+[2019-11-09T10:35:38.107] [INFO] cheese - path: /user/register/11, method: GET, 响应时间: 1ms
+[2019-11-09T10:36:00.532] [ERROR] cheese - caico
+[2019-11-09T10:36:00.535] [INFO] cheese - path: /user/register/11, method: GET, 响应时间: 10ms
