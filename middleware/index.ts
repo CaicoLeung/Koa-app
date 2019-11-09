@@ -12,7 +12,7 @@ import miHttpError from './mi-http-error'
 export default (app: Koa) => {
     // 应用请求错误处理中间件
     app.use(miHttpError({
-        errorPageFolder: path.resolve(__dirname, '..', './views/errprPage'),
+        errorPageFolder: path.resolve(__dirname, '../views/errorPage'),
         env: app.env
     }))
     app.use(miLog({
@@ -36,7 +36,7 @@ export default (app: Koa) => {
     app.use(miSend())
     // 增加错误的监听处理
     app.on("error", (err, ctx) => {
-        if (ctx && !ctx.headerSent && ctx.status < 500) {
+        if (ctx && ctx.headerSent && ctx.status < 500) {
             ctx.status = 500
         }
         if (ctx && ctx.log && ctx.log.error) {

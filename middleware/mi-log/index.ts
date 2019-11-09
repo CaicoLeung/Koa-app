@@ -1,6 +1,5 @@
 import logger from './logger'
-
-export default (options?) => {
+export default (options) => {
     const loggerMiddleware = logger(options)
     return (ctx, next) => {
         return loggerMiddleware(ctx, next)

@@ -51,11 +51,11 @@ export default (options: IBaseIngoInterface) => {
             }
         }
     }
-    log4js.configure(config)
     const logger = log4js.getLogger('cheese')
     return async (ctx, next) => {
         const start = Date.now()
-        methods.forEach((method, index) => {
+        log4js.configure(config)
+        methods.forEach((method: methodsType) => {
             contextLogger[method] = (message) => {
                 logger[method](access(ctx, message, commonInfo))
             }

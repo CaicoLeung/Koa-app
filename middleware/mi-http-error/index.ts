@@ -6,6 +6,7 @@ interface IMiHttpErrorOptions {
     errorPageFolder: string;
     env: string;
 }
+
 export default (options: IMiHttpErrorOptions) => {
     console.log(chalk.red("MiHttpError Middleware Into"))
     // 增加环境变量，用来传入到视图中，方便调试
@@ -22,8 +23,6 @@ export default (options: IMiHttpErrorOptions) => {
             if (ctx.response.status === 404 && !ctx.response.body) ctx.throw(404)
         } catch (e) {
             let status = parseInt(e.status)
-            // 默认错误信息为 error 对象上携带的 message
-            const message = e.message
             // 对 status 进行处理，指定错误页面文件名
             if (status >= 400) {
                 switch (status) {
@@ -39,6 +38,7 @@ export default (options: IMiHttpErrorOptions) => {
                 status = 500
                 fileName = status.toString()
             }
+            console.log(chalk.red(`folder: ${folder}`))
             const filePath = folder ? path.join(folder, `${fileName}.html`) : templatePath
             // 渲染对应错误类型的视图，并传入参数对象
             try {
