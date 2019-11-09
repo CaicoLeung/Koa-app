@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2b8f732a-deef-40cd-9913-ccd35d497da5" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/middleware/mi-http-error/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middleware/mi-http-error/mi-http-error.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+    <list default="true" id="04d3d9f3-aea5-471e-ae9f-3b651b15809e" name="默认更改列表" comment="">
+      <change beforePath="$PROJECT_DIR$/.bin/post.sh" beforeDir="false" afterPath="$PROJECT_DIR$/.bin/post.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/task.-19-11-08.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/task.-19-11-08.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/middleware/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/mi-log/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/mi-log/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/mi-http-error/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/mi-http-error/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/middleware/mi-log/logger.ts" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/mi-log/logger.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nunjucks/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nunjucks/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
