@@ -1,4 +1,4 @@
-import HomeService from '../service/home'
+import HomeService from '../../service/home'
 import chalk from "chalk"
 
 export default {

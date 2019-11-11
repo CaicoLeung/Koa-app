@@ -1,15 +1,15 @@
 import * as Router from "koa-router"
 import * as Koa from 'koa'
-import HomeController from '../controller/home'
+import controller from '../controller'
 
 const router: Router = new Router<any, {}>()
 
 export default (app: Koa) => {
-    router.get('/', HomeController.index)
-    router.get('/home', HomeController.home)
+    router.get('/', controller.home.index)
+    router.get('/home', controller.home.home)
     // router.get('/home/:id/:name', HomeController.homeParams)
-    router.get('/user', HomeController.login)
-    router.post('/user/register', HomeController.register)
+    router.get('/user', controller.home.login)
+    router.post('/user/register', controller.home.register)
     router.all('/*', async (ctx, next) => {
         ctx.set('Access-Control-Allow-Origin', '*')
         await next()
