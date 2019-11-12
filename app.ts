@@ -3,6 +3,9 @@ import * as Koa from 'koa'
 const app: Koa = new Koa()
 import router from "./router/router"
 import middleware from './middleware'
+import db from './database'
+
+db()
 
 middleware(app)
 
