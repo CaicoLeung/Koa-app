@@ -41,19 +41,13 @@ export default {
         console.log(chalk.yellow(JSON.stringify(ctx.request.body)))
         const { name = '', password = '', regist = '' } = ctx.request.body
         if (regist === '注册') {
-            const user = new User({
-                name,
-                password
-            })
-            user.save((err) => {
-                if (err) {
-                    console.log(chalk.red(err))
-                } else {
-                    const res = HomeService.register(name, password)
-                    console.log(chalk.green('注册成功'))
-                    ctx.render('home/login', res.data)
-                }
-            })
+            const res = await HomeService.register(name, password)
+            if(res.status === -1) {
+                await ctx.render('home/login', res.data)
+            } else {
+                ctx.state.title = '注册成功'
+                await ctx.render('home/success', res.data)
+            }
         } else if (regist === '登录') {
             const res = HomeService.login(name, password)
             if(res.status === -1) {
