@@ -1,8 +1,7 @@
-import { model, Schema, Document, SchemaDefinition, Model } from 'mongoose'
+import { model, Schema, Document, Model } from 'mongoose'
 import chalk from "chalk"
 
 interface KittyDocument extends Document {
-    createTime: SchemaDefinition
     name: string
     meow(): void
 }

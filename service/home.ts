@@ -7,6 +7,15 @@ interface IDataInterface {
 }
 export default {
     register: (name: string, pwd: string) => {
+        return {
+            status: 0,
+            data: {
+                title: '注册成功',
+                content: '已注册, 请登录'
+            }
+        }
+    },
+    login: (name: string, pwd: string) => {
         let data: IDataInterface;
         if(name === 'caico' && pwd === '123456') {
             data = {
@@ -26,5 +35,5 @@ export default {
             }
         }
         return data
-    }
+    },
 }

@@ -1,7 +1,22 @@
 import HomeService from '../../service/home'
 import chalk from "chalk"
+import User from "../../models/userModel"
 
 export default {
+    all: async (ctx, next) => {
+        const { origin, Origin, referer, Referer } = ctx.request.headers
+        const allowOrigin = origin || Origin || referer || Referer || '*'
+        ctx.set('Access-Control-Allow-Origin', allowOrigin)
+        ctx.set('Access-Control-Allow-Headers', ['Content-Type', 'Authorization', 'X-Requested-With'])
+        ctx.set('Access-Control-Allow-Methods', ['PUT', 'POST', 'GET', 'DELETE', 'OPTIONS'])
+        ctx.set('Access-Control-Allow-Credentials', 'true') //可以携带cookies
+        ctx.set('X-Powered-By', 'Koa')
+        if (ctx.request.method === 'OPTIONS') {
+            ctx.response.status = 200
+        } else {
+            await next()
+        }
+    },
     index: async (ctx, next) => {
         await ctx.render('home/index', {
             title: '主页',
@@ -23,14 +38,30 @@ export default {
         })
     },
     register: async (ctx, next) => {
-        const { name = '', password = '' } = ctx.request.body
-        const res = HomeService.register(name, password)
-        console.log(res)
-        if(res.status === -1) {
-            await ctx.render('home/login', res.data)
-        } else {
-            ctx.state.title = '个人中心'
-            await ctx.render('home/success', res.data)
+        console.log(chalk.yellow(JSON.stringify(ctx.request.body)))
+        const { name = '', password = '', regist = '' } = ctx.request.body
+        if (regist === '注册') {
+            const user = new User({
+                name,
+                password
+            })
+            user.save((err) => {
+                if (err) {
+                    console.log(chalk.red(err))
+                } else {
+                    const res = HomeService.register(name, password)
+                    console.log(chalk.green('注册成功'))
+                    ctx.render('home/login', res.data)
+                }
+            })
+        } else if (regist === '登录') {
+            const res = HomeService.login(name, password)
+            if(res.status === -1) {
+                await ctx.render('home/login', res.data)
+            } else {
+                ctx.state.title = '个人中心'
+                await ctx.render('home/success', res.data)
+            }
         }
     }
 }
