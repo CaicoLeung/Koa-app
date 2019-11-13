@@ -128,7 +128,6 @@ a:hover {
 .feature>.feature-item{
     float: left;
     width: 160px;
-    margin: 0;
     padding: 0;
     margin-right: 132px;
 }
@@ -221,7 +220,6 @@ a:hover {
     height: 42px;
     padding: 10px 10px 10px 10px;
     border-radius: 3px;
-    color: #ffffff;
     border: 1px solid #e5e5e5;
     font-size: 14px;
     line-height: 20px;
@@ -234,6 +232,7 @@ a:hover {
     box-sizing: border-box;
 }
 .hp-box input[type="submit"] {
+    color: #ffffff;
     cursor: pointer;
     background-color: #44b336;
 }

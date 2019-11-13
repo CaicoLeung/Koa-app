@@ -1,6 +1,5 @@
 import HomeService from '../../service/home'
 import chalk from "chalk"
-import User from "../../models/userModel"
 
 export default {
     all: async (ctx, next) => {

@@ -9,7 +9,9 @@ export default (app: Koa) => {
     router.get('/home', controller.home.home)
     router.get('/home/:id/:name', controller.home.homeParams)
     router.get('/user', controller.home.login)
+    router.get('/userlist', controller.userlist.index)
     router.post('/user/register', controller.home.register)
+    router.post('/userlist/deleteUser', controller.userlist.delete)
     router.all('/*', controller.home.all)
     // router.use((ctx, next) => {
     //     if(!['/', '/home', '/404'].includes(ctx.request.path)) {

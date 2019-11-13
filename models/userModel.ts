@@ -22,6 +22,8 @@ const userSchema = new Schema({
         index: true
     },
     password: String
+}, {
+    autoIndex: true
 })
 
 const User = model('User', userSchema) as UserModelConstructor
