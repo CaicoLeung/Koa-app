@@ -21,7 +21,9 @@
 		<th>{{item._id}}</th>
 		<th>{{item.name}}</th>
 		<th>{{item.password}}</th>
-		<th><button class="btn btn-danger" data-id="{{item._id}}" onclick="deleteUser(this)">删除</button></th>
+		<th>
+			<button class="btn btn-danger" data-id="{{item._id}}" onclick="deleteUser(this)">删除</button>
+		</th>
 	</tr>
 	{% endfor %}
 	</tbody>
