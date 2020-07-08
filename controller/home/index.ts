@@ -1,8 +1,10 @@
+import Koa, { Context, Next } from 'koa'
+import * as Router from 'koa-router'
 import HomeService from '../../service/home'
 import chalk from "chalk"
 
 export default {
-    all: async (ctx, next) => {
+    all: async (ctx: Context, next: Next) => {
         const { origin, Origin, referer, Referer } = ctx.request.headers
         const allowOrigin = origin || Origin || referer || Referer || '*'
         ctx.set('Access-Control-Allow-Origin', allowOrigin)
@@ -16,27 +18,27 @@ export default {
             await next()
         }
     },
-    index: async (ctx, next) => {
+    index: async (ctx: Context, next: Next) => {
         await ctx.render('home/index', {
             title: '主页',
             btnName: 'Login'
         })
     },
-    home: async (ctx, next) => {
+    home: async (ctx: Context, next: Next) => {
         console.log(chalk.green(JSON.stringify(ctx.request.query)))
         console.log(chalk.yellow(ctx.request.querystring))
         ctx.response.body = `<h1>${ctx.request.querystring || 'home page'}</h1>`
     },
-    homeParams: async (ctx, next) => {
+    homeParams: async (ctx: Context, next: Next) => {
         ctx.response.body = `<h1>home page ${ctx.params.id}  ${ctx.params.name}</h1>`
     },
-    login: async (ctx, next) => {
+    login: async (ctx: any, next: Next) => {
         await ctx.render('home/login', {
             title: '登录',
             btnName: 'Login'
         })
     },
-    register: async (ctx, next) => {
+    register: async (ctx: Context, next: Next) => {
         console.log(chalk.yellow(JSON.stringify(ctx.request.body)))
         const { name = '', password = '', regist = '' } = ctx.request.body
         if (regist === '注册') {

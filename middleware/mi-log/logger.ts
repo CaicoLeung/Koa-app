@@ -1,12 +1,13 @@
-import * as log4js from 'log4js'
+import log4js from 'log4js'
 import access from "./access"
+import Koa, { Context } from 'koa'
 
 type envTpye = typeof envTypes[number]
 type methodsType = 'trace' | 'debug' | 'info' | 'warn' | 'error' | 'fatal' | 'mark'
-interface IBaseIngoInterface {
+export interface IBaseIngoInterface {
     appLogLevel: methodsType,
     dir: string,
-    env: envTpye,
+    env: string,
     projectName: string,
     serverIp: string
 }
@@ -23,8 +24,26 @@ const baseInfo: IBaseIngoInterface = {
 }
 
 export default (options: IBaseIngoInterface) => {
-    const contextLogger = {}
-    const appenders = {
+    const contextLogger: Record<methodsType, any> = {
+      trace: null,
+      debug: null,
+      info: null,
+      warn: null,
+      error: null,
+      fatal: null,
+      mark: null
+    };
+    const appenders: {
+      cheese: {
+        type: string,
+        filename: string,
+        pattern: string
+        alwaysIncludePattern: boolean
+      },
+      out: {
+        type: string
+      }
+    } = {
         cheese: undefined,
         out: undefined
     }
@@ -37,7 +56,7 @@ export default (options: IBaseIngoInterface) => {
         pattern: 'yyy-MM-dd.log',
         alwaysIncludePattern: true
     }
-    if (envTypes.includes(env)) {
+    if (envTypes.includes(env as "env" | "local" | "development")) {
         appenders.out = {
             type: 'console'
         }
@@ -52,11 +71,11 @@ export default (options: IBaseIngoInterface) => {
         }
     }
     const logger = log4js.getLogger('cheese')
-    return async (ctx, next) => {
+    return async (ctx: Context, next: Koa.Next) => {
         const start = Date.now()
         log4js.configure(config)
         methods.forEach((method: methodsType) => {
-            contextLogger[method] = (message) => {
+            contextLogger[method] = (message: string) => {
                 logger[method](access(ctx, message, commonInfo))
             }
         })

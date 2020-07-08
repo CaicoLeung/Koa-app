@@ -1,13 +1,13 @@
-import * as Koa from 'koa'
+import Koa from 'koa'
 import * as path from "path"
 import * as ip from 'ip'
-import * as staticFiles from "koa-static"
-import * as nunjucks from 'koa-nunjucks-2'
-import * as bodyParser from "koa-bodyparser"
+import staticFiles from "koa-static"
+import bodyParser from "koa-bodyparser"
+const nunjucks = require('koa-nunjucks-2')
 
-import miSend from './mi-send'
-import miLog from './mi-log'
-import miHttpError from './mi-http-error'
+import miSend from './mi-send/index'
+import miLog from './mi-log/index'
+import miHttpError from './mi-http-error/index'
 
 export default (app: Koa) => {
     // 应用请求错误处理中间件
@@ -35,7 +35,7 @@ export default (app: Koa) => {
     app.use(bodyParser())
     app.use(miSend())
     // 增加错误的监听处理
-    app.on("error", (err, ctx) => {
+    app.on("error", (err, ctx: Koa.Context) => {
         if (ctx && ctx.headerSent && ctx.status < 500) {
             ctx.status = 500
         }

@@ -1,7 +1,9 @@
-import logger from './logger'
-export default (options) => {
+import Koa, { Context } from 'koa'
+import logger, { IBaseIngoInterface } from './logger'
+
+export default (options: IBaseIngoInterface) => {
     const loggerMiddleware = logger(options)
-    return (ctx, next) => {
+    return (ctx: Context, next: Koa.Next) => {
         return loggerMiddleware(ctx, next)
             .catch((e) => {
                 if (ctx.status <500) {

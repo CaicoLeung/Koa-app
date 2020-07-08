@@ -1,8 +1,9 @@
+import Koa, { Context } from 'koa'
 import User from "../../models/userModel"
 import chalk from "chalk"
 
 export default {
-    index: async (ctx, next) => {
+    index: async (ctx: Context, next: Koa.Next) => {
         await User.find({}, async (err, userlist) => {
             if (err) {
                 throw err
@@ -14,7 +15,7 @@ export default {
             }
         });
     },
-    delete: async (ctx, next) => {
+    delete: async (ctx: Context, next: Koa.Next) => {
         const { userId = '' } = ctx.request.body
         console.log(chalk.red('userId' + userId))
         await User.deleteOne({ _id: userId }, (err) => {

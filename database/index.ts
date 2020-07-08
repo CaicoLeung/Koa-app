@@ -1,10 +1,12 @@
-import * as mongoose from 'mongoose'
+import mongoose from 'mongoose'
 import chalk from "chalk"
 const config = require('config-lite')(__dirname)
 
 export default async () => {
     await mongoose.connect(config.url, {
-        useNewUrlParser: true
+        useCreateIndex: true,
+        useNewUrlParser: true,
+        useUnifiedTopology: true
     })
 
     const db = mongoose.connection

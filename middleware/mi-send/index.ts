@@ -1,11 +1,12 @@
+import Koa, { Context } from 'koa'
+
 export default () => {
-    const render = (json) => {
-        this.set('Content-type', 'application/json')
-        this.body = JSON.stringify(json)
+  return async (ctx: Context, next: Koa.Next) => {
+    ctx.send = (json: any) => {
+      ctx.set('Content-type', 'application/json')
+      ctx.body = JSON.stringify(json)
     }
-    return async (ctx, next) => {
-        ctx.send = render.bind(ctx)
-        ctx.log.error('caico')
-        await next()
-    }
+    ctx.log.error('caico')
+    await next()
+  }
 }

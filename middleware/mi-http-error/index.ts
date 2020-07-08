@@ -1,5 +1,6 @@
 import * as path from 'path'
 import * as nunjucks from 'nunjucks'
+import Koa, { Context } from 'koa'
 import chalk from "chalk"
 
 interface IMiHttpErrorOptions {
@@ -8,20 +9,21 @@ interface IMiHttpErrorOptions {
 }
 
 export default (options: IMiHttpErrorOptions) => {
-    console.log(chalk.red("MiHttpError Middleware Into"))
+    // console.log(chalk.red("MiHttpError Middleware Into"))
     // 增加环境变量，用来传入到视图中，方便调试
     const env = options.env || process.env.NODE_ENV || 'development'
     // 400.html 404.html other.html 的存放位置
     const folder = options.errorPageFolder
     // 指定默认模板文件
     const templatePath = path.resolve(__dirname, './mi-http-error.html')
-    return async (ctx, next) => {
+    return async (ctx: Context, next: Koa.Next) => {
         let fileName = 'other'
         try {
             await next()
             // 如果没有更改过 response 的 status，则 koa 默认的 status 是 404
             if (ctx.response.status === 404 && !ctx.response.body) ctx.throw(404)
         } catch (e) {
+            console.log('catch: ', e);
             let status = parseInt(e.status)
             // 对 status 进行处理，指定错误页面文件名
             if (status >= 400) {
@@ -38,7 +40,7 @@ export default (options: IMiHttpErrorOptions) => {
                 status = 500
                 fileName = status.toString()
             }
-            console.log(chalk.red(`folder: ${folder}`))
+            console.log(chalk.red(`folder: ${folder}`, ))
             const filePath = folder ? path.join(folder, `${fileName}.html`) : templatePath
             // 渲染对应错误类型的视图，并传入参数对象
             try {

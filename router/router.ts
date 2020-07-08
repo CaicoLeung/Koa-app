@@ -1,8 +1,8 @@
-import * as Router from "koa-router"
+import Router from "koa-router"
 import * as Koa from 'koa'
 import controller from '../controller'
 
-const router: Router = new Router<any, {}>()
+const router: Router = new Router()
 
 export default (app: Koa) => {
     router.get('/', controller.home.index)
@@ -12,12 +12,12 @@ export default (app: Koa) => {
     router.get('/userlist', controller.userlist.index)
     router.post('/user/register', controller.home.register)
     router.post('/userlist/deleteUser', controller.userlist.delete)
-    router.all('/*', controller.home.all)
-    // router.use((ctx, next) => {
-    //     if(!['/', '/home', '/404'].includes(ctx.request.path)) {
-    //         ctx.redirect('/home')
-    //     }
-    // })
+    router.all('/home', controller.home.all)
+    router.use((ctx: Koa.Context, next: Koa.Next) => {
+        if(!['/', '/home', '/404'].includes(ctx.request.path)) {
+            ctx.redirect('/home')
+        }
+    })
     app.use(router.routes())
         .use(router.allowedMethods())
 }

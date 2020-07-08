@@ -1,9 +1,9 @@
-import * as Koa from 'koa'
+import Koa from 'koa'
 
-const app: Koa = new Koa()
+const app = new Koa()
 import router from "./router/router"
-import middleware from './middleware'
-import db from './database'
+import middleware from './middleware/index'
+import db from './database/index'
 
 db()
 
