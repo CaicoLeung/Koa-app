@@ -11,11 +11,16 @@ interface IDataInterface {
 
 let data: IDataInterface;
 export default {
-    register: async (name: string, pwd: string) => {
-        const user = new User({
-            name,
-            password: pwd
-        })
+    register: async (params: {
+      nickname: string
+      password: string
+      age: number
+      name: {
+        first: string,
+        last: string
+      }
+    }) => {
+        const user = new User({ ...params })
         await user.save((err) => {
             if (err) {
                 console.log(chalk.red(err))

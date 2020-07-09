@@ -39,10 +39,10 @@ export default {
         })
     },
     register: async (ctx: Context, next: Next) => {
-        console.log(chalk.yellow(JSON.stringify(ctx.request.body)))
-        const { name = '', password = '', regist = '' } = ctx.request.body
-        if (regist === '注册') {
-            const res = await HomeService.register(name, password)
+        console.log(chalk.yellow("body参数: " + JSON.stringify(ctx.request.body)))
+        const params = ctx.request.body
+        if (params.type === 'regist') {
+            const res = await HomeService.register({ ...params })
             if(res.status === -1) {
                 ctx.state.title = '注册失败'
                 await ctx.render('home/login', res.data)
@@ -50,8 +50,8 @@ export default {
                 ctx.state.title = '注册成功'
                 await ctx.render('home/login', res.data)
             }
-        } else if (regist === '登录') {
-            const res = HomeService.login(name, password)
+        } else if (params.type === 'login') {
+            const res = HomeService.login(params.name, params.password)
             if(res.status === -1) {
                 await ctx.render('home/login', res.data)
             } else {

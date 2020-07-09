@@ -16,13 +16,19 @@
 				<h1>到达战场</h1>
 				<p class="error">{{content}}</p>
 				<label>
-					<input type="text" name="name" placeholder="请输入用户名" />
+					<input type="text" name="nickname" placeholder="请输入用户名" />
 				</label>
 				<label>
 					<input type="password" name="password" placeholder="请输入密码" />
+        </label>
+        <label>
+					<input type="text" name="name['first']" placeholder="请输入姓氏" />
+        </label>
+        <label>
+					<input type="text" name="name['last']" placeholder="请输入名字" />
 				</label>
-				<input type="submit" name="login" value="登录" class="blue" />
-				<input type="submit" name="regist" value="注册" />
+				<input type="submit" name="type" value="login" class="blue" />
+				<input type="submit" name="type" value="regist" />
 			</form>
 		</div>
 	</div>
