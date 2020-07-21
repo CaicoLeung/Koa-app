@@ -8,11 +8,12 @@ export default (app: Koa) => {
     router.get('/', controller.home.index)
     router.get('/home', controller.home.home)
     router.get('/home/:id/:name', controller.home.homeParams)
-    router.get('/user', controller.home.login)
+    router.get('/user', controller.home.user)
     router.get('/userlist', controller.userlist.index)
+    router.post('/user/login', controller.home.login)
     router.post('/user/register', controller.home.register)
     router.post('/userlist/deleteUser', controller.userlist.delete)
-    router.all(['/', '/home', '/home/:id/:name', '/user', '/userlist', '/user/register', '/userlist/deleteUser'], controller.home.all)
+    router.all(['/', '/home', '/home/:id/:name', '/user', '/userlist', '/user/login', '/user/register', '/userlist/deleteUser'], controller.home.all)
     router.use((ctx: Koa.Context, next: Koa.Next) => {
         if(!['/', '/home', '/404'].includes(ctx.request.path)) {
             ctx.redirect('/home')

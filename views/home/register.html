@@ -12,7 +12,7 @@
 {% block content %}
 	<div class="hp-dialog">
 		<div class="hp-box">
-			<form action="/user/login" method="get">
+			<form action="/user/register" method="post">
 				<h1>到达战场</h1>
 				<p class="error">{{content}}</p>
 				<label>
@@ -21,7 +21,16 @@
 				<label>
 					<input type="password" name="password" placeholder="请输入密码" />
         </label>
-				<button type="submit" class="blue">登录</button>
+        <label>
+					<input type="number" name="age" placeholder="请输入年龄" />
+        </label>
+        <label>
+					<input type="text" name="firstName" placeholder="请输入姓氏" />
+        </label>
+        <label>
+					<input type="text" name="lastName" placeholder="请输入名字" />
+        </label>
+        <button type="submit" class="blue">注册</button>
 			</form>
 		</div>
 	</div>
