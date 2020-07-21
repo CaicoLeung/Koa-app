@@ -2,6 +2,7 @@ import Koa, { Context, Next } from 'koa'
 import * as Router from 'koa-router'
 import HomeService from '../../service/home'
 import chalk from "chalk"
+import UserModel from '../../models/userModel'
 
 export default {
     all: async (ctx: Context, next: Next) => {

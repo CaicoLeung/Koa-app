@@ -27,6 +27,7 @@ const userSchema = new Schema({
         match: /^[0-9a-zA-Z]{1,2}|[\u4e00-\u9eff]{1,8}$/,
         index: true
     },
+    age: Number,
     password: String,
     name: {
       first: String,
@@ -34,10 +35,6 @@ const userSchema = new Schema({
     }
 }, {
     autoIndex: true
-})
-
-userSchema.virtual('fullName').get(function () {
-  return this.name.first + ' ' + this.name.last
 })
 
 const User = model('User', userSchema) as UserModelConstructor

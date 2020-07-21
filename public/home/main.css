@@ -218,6 +218,9 @@ a:hover {
     color: red;
     line-height: 30px;
 }
+.hp-box label {
+  width: 100%;
+}
 .hp-box input {
     display: block;
     width: 100%;

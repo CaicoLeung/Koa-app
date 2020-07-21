@@ -1,4 +1,4 @@
-import User from "../models/userModel"
+import UserModel from "../models/userModel"
 import chalk from "chalk"
 
 interface IDataInterface {
@@ -15,12 +15,29 @@ export default {
       nickname: string
       password: string
       age: number
-      name: {
-        first: string,
-        last: string
-      }
+      firstName: string
+      lastName: string
     }) => {
-        const user = new User({ ...params })
+        const { nickname, password, age = 0, firstName, lastName } = params
+        const result = await UserModel.find({ nickname }).exec()
+        if (result.length > 0) {
+          return {
+            status: -1,
+            data: {
+                title: '注册出错',
+                content: '账号已存在'
+            }
+          }
+        }
+        const user = new UserModel({
+          nickname,
+          password,
+          age,
+          name: {
+            first: firstName,
+            last: lastName
+          }
+        })
         await user.save((err) => {
             if (err) {
                 console.log(chalk.red(err))
@@ -32,7 +49,6 @@ export default {
                     }
                 }
             } else {
-                console.log("51515151515151")
                 console.log(chalk.green('注册成功'))
                 data = {
                     status: 0,

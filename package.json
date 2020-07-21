@@ -4,7 +4,8 @@
   "description": "基于node.js + Mongodb构建的后台系统",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node app.ts"
   },
   "author": "",
   "license": "MIT",
