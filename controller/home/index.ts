@@ -48,6 +48,11 @@ export default {
       await ctx.render('home/success', res.data)
     }
   },
+  regist: async (ctx: Context, next: Next) => {
+    await ctx.render('home/register', {
+      title: '注册'
+    })
+  },
   register: async (ctx: Context, next: Next) => {
     console.log(chalk.yellow("body参数: " + JSON.stringify(ctx.request.body)))
     const params = ctx.request.body

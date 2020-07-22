@@ -10,6 +10,7 @@ export default (app: Koa) => {
     router.get('/home/:id/:name', controller.home.homeParams)
     router.get('/user', controller.home.user)
     router.get('/userlist', controller.userlist.index)
+    router.get('/user/regist', controller.home.regist)
     router.post('/user/login', controller.home.login)
     router.post('/user/register', controller.home.register)
     router.post('/userlist/deleteUser', controller.userlist.delete)

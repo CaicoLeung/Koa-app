@@ -10,16 +10,16 @@
 	<thead>
 	<tr>
 		<th scope="col">#</th>
-		<th scope="col">name</th>
-		<th scope="col">password</th>
-		<th scope="col">handle</th>
+		<th scope="col">全名</th>
+		<th scope="col">密码</th>
+		<th scope="col">操作</th>
 	</tr>
 	</thead>
 	<tbody>
 	{% for item in userlist %}
 	<tr>
 		<th>{{item._id}}</th>
-		<th>{{item.name}}</th>
+		<th>{{item.name.first + ' ' + item.name.last}}</th>
 		<th>{{item.password}}</th>
 		<th>
 			<button class="btn btn-danger" data-id="{{item._id}}" onclick="deleteUser(this)">删除</button>
