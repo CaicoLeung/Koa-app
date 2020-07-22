@@ -72,7 +72,7 @@ export default {
     } else if (result.name && result.password === pwd) {
       data = new Response(0, { title: '个人中心', content: '欢迎进入个人中心!' })
     } else {
-      data = new Response(-1, { title: '登录失败', content: '请输入正确的账号信息!' })
+      data = new Response(-1, { title: '登录失败', content: '密码错误!' })
     }
     return data
   },

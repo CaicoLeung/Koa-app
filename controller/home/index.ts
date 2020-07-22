@@ -41,7 +41,6 @@ export default {
   login: async (ctx: Context, next: Next) => {
     const params = ctx.request.body
     const res = await HomeService.login(params.nickname, params.password)
-    console.log(res)
     if (res.status === -1) {
       await ctx.render('home/login', res.data)
     } else {
