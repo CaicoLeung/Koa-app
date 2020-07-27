@@ -24,7 +24,7 @@ export default (app: Koa) => {
     router.post('/user/register', controller.home.register)
     router.post('/userlist/deleteUser', controller.userlist.delete)
     router.post('/upload', upload.single('avatar'), controller.multerUpload.upload)
-    router.all(['/', '/home', '/home/:id/:name', '/user', '/userlist', '/user/login', '/user/register', '/userlist/deleteUser'], controller.home.all)
+    router.all(['/', '/home', '/home/:id/:name', '/user', '/userlist', '/user/login', '/user/register', '/userlist/deleteUser', '/upload'], controller.home.all)
     router.use((ctx: Koa.Context, next: Koa.Next) => {
         if(['/', '/home', '/404'].includes(ctx.request.path)) {
             ctx.redirect('/home')
